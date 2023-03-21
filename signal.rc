@@ -1,0 +1,265 @@
+Magic 271485
+Revision Verdi_P-2019.06
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 1920 26 1920 1057 198 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/fishop/CPU/CPU.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 169175.000000
+cursor 230000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 118
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "PC"
+activeDirFile "" "/home/fishop/CPU/CPU.fsdb"
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/clk
+addSignal -h 15 -holdScope rst
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/pc_reg0/ce
+addSignal -h 15 -holdScope pc[31:0]
+addGroup "inst"
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/inst_rom0/addr[31:0]
+addSignal -h 15 -holdScope inst[31:0]
+addGroup "if/id" -e FALSE
+addSubGroup "input if" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0/if_pc[31:0]
+addSignal -h 15 -holdScope if_inst[31:0]
+endSubGroup "input if"
+addSubGroup "output id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0/id_pc[31:0]
+addSignal -h 15 -holdScope id_inst[31:0]
+endSubGroup "output id"
+addGroup "id" -e FALSE
+addSubGroup "pc -> id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/inst_i[31:0]
+addSignal -h 15 -holdScope pc_i[31:0]
+endSubGroup "pc -> id"
+addSubGroup "reg -> id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/reg1_data_i[31:0]
+addSignal -h 15 -holdScope reg2_data_i[31:0]
+endSubGroup "reg -> id"
+addSubGroup "ex -> id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/ex_wreg_i
+addSignal -h 15 -holdScope ex_wd_i[4:0]
+addSignal -h 15 -holdScope ex_wdata_i[31:0]
+endSubGroup "ex -> id"
+addSubGroup "mem -> id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/mem_wreg_i
+addSignal -h 15 -holdScope mem_wd_i[4:0]
+addSignal -h 15 -holdScope mem_wdata_i[31:0]
+endSubGroup "mem -> id"
+addSubGroup "id -> reg" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/reg1_read_o
+addSignal -h 15 -holdScope reg2_read_o
+addSignal -h 15 -holdScope reg1_addr_o[4:0]
+addSignal -h 15 -holdScope reg2_addr_o[4:0]
+endSubGroup "id -> reg"
+addSubGroup "id -> id/ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/aluop_o[7:0]
+addSignal -h 15 -holdScope alusel_o[2:0]
+addSignal -h 15 -holdScope reg1_o[31:0]
+addSignal -h 15 -holdScope reg2_o[31:0]
+addSignal -h 15 -holdScope wd_o[4:0]
+addSignal -h 15 -holdScope wreg_o
+endSubGroup "id -> id/ex"
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0/op1[5:0]
+addSignal -h 15 -holdScope op2[4:0]
+addSignal -h 15 -holdScope op3[5:0]
+addSignal -h 15 -holdScope op4[4:0]
+addSignal -h 15 -holdScope imm[31:0]
+addSignal -h 15 -holdScope instvalid
+addGroup "id/ex" -e FALSE
+addSubGroup "input id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id_ex0/id_aluop[7:0]
+addSignal -h 15 -holdScope id_alusel[2:0]
+addSignal -h 15 -holdScope id_reg1[31:0]
+addSignal -h 15 -holdScope id_reg2[31:0]
+addSignal -h 15 -holdScope id_wd[4:0]
+addSignal -h 15 -holdScope id_wreg
+endSubGroup "input id"
+addSubGroup "output ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id_ex0/ex_aluop[7:0]
+addSignal -h 15 -holdScope ex_alusel[2:0]
+addSignal -h 15 -holdScope ex_reg1[31:0]
+addSignal -h 15 -holdScope ex_reg2[31:0]
+addSignal -h 15 -holdScope ex_wd[4:0]
+addSignal -h 15 -holdScope ex_wreg
+endSubGroup "output ex"
+addGroup "ex" -e FALSE
+addSubGroup "id/ex -> ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/aluop_i[7:0]
+addSignal -h 15 -holdScope alusel_i[2:0]
+addSignal -h 15 -holdScope reg1_i[31:0]
+addSignal -h 15 -holdScope reg2_i[31:0]
+addSignal -h 15 -holdScope wd_i[4:0]
+addSignal -h 15 -holdScope wreg_i
+endSubGroup "id/ex -> ex"
+addSubGroup "mem -> ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/mem_hi_i[31:0]
+addSignal -h 15 -holdScope mem_lo_i[31:0]
+addSignal -h 15 -holdScope mem_whilo_i
+endSubGroup "mem -> ex"
+addSubGroup "mem/wb -> ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/wb_hi_i[31:0]
+addSignal -h 15 -holdScope wb_lo_i[31:0]
+addSignal -h 15 -holdScope wb_whilo_i
+endSubGroup "mem/wb -> ex"
+addSubGroup "hilo -> ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/hi_i[31:0]
+addSignal -h 15 -holdScope lo_i[31:0]
+endSubGroup "hilo -> ex"
+addSubGroup "ex -> ex/mem" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/wd_o[4:0]
+addSignal -h 15 -holdScope wdata_o[31:0]
+addSignal -h 15 -holdScope wreg_o
+addSignal -h 15 -holdScope hi_o[31:0]
+addSignal -h 15 -holdScope lo_o[31:0]
+addSignal -h 15 -holdScope whilo_o
+endSubGroup "ex -> ex/mem"
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/HI[31:0]
+addSignal -h 15 -holdScope LO[31:0]
+addSignal -h 15 -holdScope moveres[31:0]
+addSignal -h 15 -holdScope shiftres[31:0]
+addSignal -h 15 -holdScope logicout[31:0]
+addGroup "ex/mem" -e FALSE
+addSubGroup "input ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex_mem0/ex_wd[4:0]
+addSignal -h 15 -holdScope ex_wdata[31:0]
+addSignal -h 15 -holdScope ex_wreg
+endSubGroup "input ex"
+addSubGroup "output mem" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex_mem0/mem_wd[4:0]
+addSignal -h 15 -holdScope mem_wdata[31:0]
+addSignal -h 15 -holdScope mem_wreg
+endSubGroup "output mem"
+addGroup "mem" -e FALSE
+addSubGroup "input ex/mem" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem0/wd_i[4:0]
+addSignal -h 15 -holdScope wdata_i[31:0]
+addSignal -h 15 -holdScope wreg_i
+addSignal -h 15 -holdScope hi_i[31:0]
+addSignal -h 15 -holdScope lo_i[31:0]
+addSignal -h 15 -holdScope whilo_i
+endSubGroup "input ex/mem"
+addSubGroup "output mem/wb" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem0/wd_o[4:0]
+addSignal -h 15 -holdScope wdata_o[31:0]
+addSignal -h 15 -holdScope wreg_o
+addSignal -h 15 -holdScope hi_o[31:0]
+addSignal -h 15 -holdScope lo_o[31:0]
+addSignal -h 15 -holdScope whilo_o
+endSubGroup "output mem/wb"
+addGroup "mem/wb" -e FALSE
+addSubGroup "input mem" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem_wb0/mem_wd[4:0]
+addSignal -h 15 -holdScope mem_wreg
+addSignal -h 15 -holdScope mem_wdata[31:0]
+addSignal -h 15 -holdScope mem_hi[31:0]
+addSignal -h 15 -holdScope mem_lo[31:0]
+addSignal -h 15 -holdScope mem_whilo
+endSubGroup "input mem"
+addSubGroup "output reg" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem_wb0/wb_wd[4:0]
+addSignal -h 15 -holdScope wb_wreg
+addSignal -h 15 -holdScope wb_wdata[31:0]
+addSignal -h 15 -holdScope wb_hi[31:0]
+addSignal -h 15 -holdScope wb_lo[31:0]
+addSignal -h 15 -holdScope wb_whilo
+endSubGroup "output reg"
+addGroup "reg" -e FALSE
+addSubGroup "id -> reg" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1/re1
+addSignal -h 15 -holdScope re2
+addSignal -h 15 -holdScope raddr1[4:0]
+addSignal -h 15 -holdScope raddr2[4:0]
+endSubGroup "id -> reg"
+addSubGroup "mem/wb -> reg" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1/we
+addSignal -h 15 -holdScope waddr[4:0]
+addSignal -h 15 -holdScope wdata[31:0]
+endSubGroup "mem/wb -> reg"
+addSubGroup "reg -> id" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1/rdata1[31:0]
+addSignal -h 15 -holdScope rdata2[31:0]
+endSubGroup "reg -> id"
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1/regs[0:31]
+addGroup "hilo" -e FALSE
+addSubGroup "input mem/wb" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/hilo_reg0/we
+addSignal -h 15 -holdScope hi_i[31:0]
+addSignal -h 15 -holdScope lo_i[31:0]
+endSubGroup "input mem/wb"
+addSubGroup "output ex" -e FALSE
+addSignal -h 15 /openmips_min_sopc_tb/openmips_min_sopc0/openmips0/hilo_reg0/hi_o[31:0]
+addSignal -h 15 -holdScope lo_o[31:0]
+endSubGroup "output ex"
+addGroup "G12"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/fishop/CPU/CPU.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/openmips_min_sopc_tb"
+"/openmips_min_sopc_tb/openmips_min_sopc0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1"
+
+SCOPE_LIST_BEGIN
+"/openmips_min_sopc_tb"
+"/openmips_min_sopc_tb/openmips_min_sopc0/inst_rom0"
+"/openmips_min_sopc_tb/openmips_min_sopc0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/pc_reg0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/id_ex0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex_mem0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem_wb0"
+"/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/hilo_reg0"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+
